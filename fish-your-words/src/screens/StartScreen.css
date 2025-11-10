@@ -1,0 +1,279 @@
+.start-screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Sky Background */
+.sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    #87CEEB 0%,
+    #B0E0E6 50%,
+    #E0F6FF 100%
+  );
+  z-index: 1;
+}
+
+/* Sun */
+.sun {
+  position: absolute;
+  top: 50px;
+  right: 100px;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, #FDB813 0%, #FFA500 70%);
+  border-radius: 50%;
+  box-shadow: 0 0 40px rgba(253, 184, 19, 0.6);
+  z-index: 2;
+  animation: sunPulse 3s ease-in-out infinite;
+}
+
+@keyframes sunPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 40px rgba(253, 184, 19, 0.6);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 60px rgba(253, 184, 19, 0.8);
+  }
+}
+
+/* Ocean */
+.ocean {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(
+    to bottom,
+    #1E90FF 0%,
+    #4169E1 50%,
+    #0047AB 100%
+  );
+  z-index: 1;
+}
+
+/* Waves */
+.wave {
+  position: absolute;
+  top: -5px;
+  left: -100%;
+  width: 200%;
+  height: 40px;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,60 Q300,20 600,60 T1200,60 L1200,120 L0,120 Z" fill="%234682B4" fill-opacity="0.3"/></svg>') repeat-x;
+  background-size: 1200px 40px;
+  opacity: 0.6;
+}
+
+.wave-1 {
+  animation: waveMove 15s linear infinite;
+  z-index: 3;
+}
+
+.wave-2 {
+  top: 5px;
+  animation: waveMove 20s linear infinite reverse;
+  z-index: 2;
+  opacity: 0.4;
+}
+
+.wave-3 {
+  top: 10px;
+  animation: waveMove 25s linear infinite;
+  z-index: 1;
+  opacity: 0.3;
+}
+
+@keyframes waveMove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+
+/* Boat */
+.boat {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  animation: boatSway 3s ease-in-out infinite;
+}
+
+.boat-placeholder {
+  font-size: 60px;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes boatSway {
+  0%, 100% {
+    transform: translateX(-50%) rotate(-2deg);
+  }
+  50% {
+    transform: translateX(-50%) rotate(2deg);
+  }
+}
+
+/* Ambient Fish */
+.ambient-fish {
+  position: absolute;
+  font-size: 30px;
+  z-index: 2;
+  opacity: 0.7;
+}
+
+.fish-1 {
+  top: 60%;
+  animation: swimAcross 15s linear infinite;
+}
+
+.fish-2 {
+  top: 70%;
+  animation: swimAcross 20s linear infinite 5s;
+}
+
+.fish-3 {
+  top: 80%;
+  animation: swimAcross 18s linear infinite 10s;
+}
+
+@keyframes swimAcross {
+  0% {
+    left: -50px;
+    transform: scaleX(1);
+  }
+  49% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(-1);
+  }
+  100% {
+    left: calc(100% + 50px);
+    transform: scaleX(-1);
+  }
+}
+
+/* Start Panel */
+.start-panel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 40px 60px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  border: 3px solid rgba(65, 105, 225, 0.3);
+}
+
+.game-title {
+  font-size: 48px;
+  font-weight: bold;
+  color: #0047AB;
+  margin: 0 0 10px 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: 1px;
+}
+
+.game-subtitle {
+  font-size: 16px;
+  color: #4169E1;
+  margin: 0 0 30px 0;
+  font-style: italic;
+}
+
+.high-score-display {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 30px;
+  padding: 10px 20px;
+  background: rgba(255, 215, 0, 0.2);
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.play-button {
+  font-size: 32px;
+  font-weight: bold;
+  padding: 20px 80px;
+  background: linear-gradient(135deg, #4169E1 0%, #1E90FF 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(65, 105, 225, 0.4);
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.play-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(65, 105, 225, 0.6);
+  background: linear-gradient(135deg, #5179F1 0%, #2EA0FF 100%);
+}
+
+.play-button:active {
+  transform: translateY(-1px);
+}
+
+.bottom-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.how-to-play-button {
+  font-size: 14px;
+  padding: 10px 20px;
+  background: rgba(65, 105, 225, 0.1);
+  color: #4169E1;
+  border: 2px solid #4169E1;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+.how-to-play-button:hover {
+  background: rgba(65, 105, 225, 0.2);
+  transform: translateY(-2px);
+}
+
+.settings-button {
+  font-size: 20px;
+  padding: 10px 15px;
+  background: rgba(65, 105, 225, 0.1);
+  color: #4169E1;
+  border: 2px solid #4169E1;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-button:hover {
+  background: rgba(65, 105, 225, 0.2);
+  transform: rotate(45deg);
+}

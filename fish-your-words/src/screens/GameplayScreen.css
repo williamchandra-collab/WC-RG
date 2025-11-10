@@ -1,0 +1,302 @@
+.gameplay-screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  cursor: crosshair;
+  user-select: none;
+}
+
+/* HUD */
+.hud {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.hud-left, .hud-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.hud-right {
+  justify-content: flex-end;
+}
+
+.hud-center {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.star-count {
+  font-size: 24px;
+  font-weight: bold;
+  color: #FF8C00;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.target-word {
+  display: flex;
+  gap: 8px;
+  font-size: 36px;
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+}
+
+.target-letter {
+  color: #999;
+  transition: all 0.3s ease;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.target-letter.completed {
+  color: #2ECC71;
+  transform: scale(1.1);
+  text-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+}
+
+.hearts {
+  font-size: 24px;
+  display: flex;
+  gap: 5px;
+}
+
+.timer {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  background: rgba(255, 215, 0, 0.2);
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+
+.pause-button {
+  font-size: 24px;
+  background: rgba(65, 105, 225, 0.1);
+  border: 2px solid #4169E1;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pause-button:hover {
+  background: rgba(65, 105, 225, 0.2);
+  transform: scale(1.1);
+}
+
+/* Boat area */
+.boat-area {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, #D2B48C 0%, #8B7355 100%);
+  border-bottom: 5px solid #654321;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.boat-icon {
+  font-size: 60px;
+  animation: boatRock 3s ease-in-out infinite;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes boatRock {
+  0%, 100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+/* Ocean background */
+.ocean-bg {
+  position: absolute;
+  top: 180px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    #1E90FF 0%,
+    #4169E1 50%,
+    #0047AB 100%
+  );
+  overflow: hidden;
+}
+
+.water-ripple {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: ripple 4s ease-in-out infinite;
+}
+
+@keyframes ripple {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.5;
+  }
+}
+
+/* Fish */
+.fish-sprite {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+  transition: transform 0.1s linear;
+}
+
+.fish-body {
+  position: relative;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+}
+
+.fish-letter {
+  position: absolute;
+  font-size: 0.5em;
+  font-weight: bold;
+  color: white;
+  text-shadow: 
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;
+  pointer-events: none;
+}
+
+/* Fishing line and hook */
+.fishing-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.fishing-hook {
+  position: absolute;
+  font-size: 30px;
+  transform: translate(-50%, -50%);
+  z-index: 70;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
+  pointer-events: none;
+}
+
+.fishing-hook.aiming {
+  opacity: 0.6;
+  animation: hookPulse 0.5s ease-in-out infinite;
+}
+
+@keyframes hookPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+/* Celebration overlay */
+.celebration-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 200;
+  text-align: center;
+  animation: celebrationBounce 0.6s ease-out;
+}
+
+@keyframes celebrationBounce {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.celebration-text {
+  font-size: 48px;
+  font-weight: bold;
+  color: #2ECC71;
+  text-shadow: 
+    0 0 10px rgba(46, 204, 113, 0.5),
+    0 0 20px rgba(46, 204, 113, 0.3);
+  margin-bottom: 10px;
+}
+
+.celebration-bonus {
+  font-size: 36px;
+  font-weight: bold;
+  color: #FF8C00;
+  text-shadow: 
+    0 0 10px rgba(255, 140, 0, 0.5),
+    0 0 20px rgba(255, 140, 0, 0.3);
+  animation: bonusFloat 0.5s ease-out;
+}
+
+@keyframes bonusFloat {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Wrong answer flash effect */
+@keyframes wrongFlash {
+  0%, 100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: rgba(255, 0, 0, 0.3);
+  }
+}
+
+.gameplay-screen.wrong-flash {
+  animation: wrongFlash 0.3s ease;
+}

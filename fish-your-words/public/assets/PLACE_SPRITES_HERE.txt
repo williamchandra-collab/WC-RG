@@ -1,0 +1,12 @@
+Place your PNG sprite assets here:
+
+Required Assets:
+- boat.png (Boat sprite - recommended 200x150px)
+- fish-1.png (Fish sprite - recommended 80x60px)
+- fish-2.png (Fish sprite variation - optional)
+- fish-3.png (Fish sprite variation - optional)
+
+Optional Assets:
+- background-music.mp3 (Background music file)
+
+See ASSETS_GUIDE.md in the root directory for detailed integration instructions.

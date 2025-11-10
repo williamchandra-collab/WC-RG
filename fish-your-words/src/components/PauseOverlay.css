@@ -1,0 +1,93 @@
+.pause-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease;
+  backdrop-filter: blur(5px);
+}
+
+.pause-panel {
+  background: white;
+  padding: 50px 60px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  animation: slideDown 0.3s ease;
+  border: 3px solid #4169E1;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.pause-panel h2 {
+  margin: 0 0 40px 0;
+  color: #0047AB;
+  font-size: 36px;
+  letter-spacing: 3px;
+}
+
+.pause-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.pause-btn {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 250px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.resume-btn {
+  background: linear-gradient(135deg, #2ECC71 0%, #27AE60 100%);
+  color: white;
+}
+
+.resume-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(46, 204, 113, 0.4);
+  background: linear-gradient(135deg, #3EDC81 0%, #37BE70 100%);
+}
+
+.restart-btn {
+  background: linear-gradient(135deg, #4169E1 0%, #1E90FF 100%);
+  color: white;
+}
+
+.restart-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(65, 105, 225, 0.4);
+  background: linear-gradient(135deg, #5179F1 0%, #2EA0FF 100%);
+}
+
+.quit-btn {
+  background: rgba(65, 105, 225, 0.1);
+  color: #4169E1;
+  border: 2px solid #4169E1;
+}
+
+.quit-btn:hover {
+  background: rgba(65, 105, 225, 0.2);
+  transform: translateY(-3px);
+}
